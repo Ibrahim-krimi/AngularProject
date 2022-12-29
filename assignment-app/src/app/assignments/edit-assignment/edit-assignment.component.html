@@ -1,0 +1,28 @@
+<form class="form" #formAssignment xmlns="http://www.w3.org/1999/html">
+  <mat-form-field>
+    <input matInput
+           [matDatepicker]="picker"
+           placeholder="Date de rendu"
+           [(ngModel)]="dateDeRendu"
+           name="date">
+  </mat-form-field>
+  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker>
+  <br/>
+  <mat-form-field>
+    <input matInput
+           placeholder="Nom du devoir"
+           [(ngModel)]="nomDevoir"
+           name="nom"
+    >
+  </mat-form-field>
+  <br/>
+  <button type="button" mat-stroked-button
+          color="primary"
+          [disabled]="((!nomDevoir)||(!dateDeRendu))"
+          (click)="OnSaveAssignment()"
+  > Modifiers
+  </button >
+
+</form>
+

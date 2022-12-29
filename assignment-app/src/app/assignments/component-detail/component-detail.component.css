@@ -1,0 +1,11 @@
+
+#mat-card{
+  margin-top: 10px;
+  padding-top: 10px;
+}
+#button_supp{
+  display: flex;
+  flex-direction: row;
+  justify-content:space-between;
+  align-items: flex-end;
+}

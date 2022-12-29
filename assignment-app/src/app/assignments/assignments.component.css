@@ -1,0 +1,23 @@
+.rendu
+{
+  color: green;
+}
+.nonRendu
+{
+  color: red;
+}
+#button_ajout,#button_supp,#button_supp2{
+
+  margin-top: 10px;
+  position: absolute;
+  right: 0;
+  width: 120px;
+  transform: translateY(-50%);
+
+
+
+}
+
+
+
+
