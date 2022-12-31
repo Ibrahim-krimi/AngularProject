@@ -10,3 +10,12 @@ mat-sidenav{
 mat-sidenav-content{
   margin: 20px;
 }
+
+.composant{
+  position: relative;
+  top: 10%;
+  left: 16%;
+  width: 400px;
+  display: flex;
+  justify-content: right;
+}

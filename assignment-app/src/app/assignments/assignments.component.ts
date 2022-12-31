@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild,AfterViewInit} from '@angular/core';
 import { assignment } from './assignments.model';
 import {AssignmentsService} from '../shared/assignments.service';
 import {Observable, of} from "rxjs";
+import {MatSort} from "@angular/material/sort";
+import {MatTableDataSource} from "@angular/material/table";
 
 
 @Component({
@@ -9,7 +11,7 @@ import {Observable, of} from "rxjs";
   templateUrl: './assignments.component.html',
   styleUrls: ['./assignments.component.css']
 })
-export class AssignmentsComponent implements OnInit {
+export class AssignmentsComponent implements OnInit ,AfterViewInit {
  titre ="mon application sur les assingment !";
 
  formVisible = false;
@@ -28,6 +30,9 @@ export class AssignmentsComponent implements OnInit {
   prevPage:number=0;
   hasNextPage:boolean=false;
   nextPage:number=0;
+  //pour l'affichage en table
+  displayedColumns: string[] = ['demo-id', 'demo-nom', 'demo-dateDeRendu', 'demo-rendu'];
+  dataSource= new MatTableDataSource(this.assignemets);
 
  constructor (private assignementService:AssignmentsService) { }
 
@@ -55,6 +60,11 @@ export class AssignmentsComponent implements OnInit {
 this.assignmentSelection=assignemet;
 }
 
+@ViewChild(MatSort) sort:MatSort;
+ ngAfterViewInit(){
+   this.dataSource.data;
+
+ }
 onAddAssignmentbtnClick(){
   this.formVisible=true;
 }
@@ -68,5 +78,25 @@ onNouvelAssignment(event:assignment){
   OnsuppAssignment(event:assignment){
       this.assignmentSelection=this.assignmentSelection2;
 
+  }
+  pagePremiere(){
+  this.page=1;
+    this.getAssignements();
+  }
+  pagePrecdent(){
+    if (this.hasPrevPage){
+      this.page=this.prevPage;
+      this.getAssignements();
+    }
+  }
+  pageSuivant(){
+    if (this.hasNextPage){
+      this.page=this.nextPage;
+      this.getAssignements();
+    }
+  }
+  pageDerniere(){
+    this.page=this.totalPages;
+    this.getAssignements();
   }
 }

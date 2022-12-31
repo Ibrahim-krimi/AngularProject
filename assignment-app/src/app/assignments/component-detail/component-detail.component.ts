@@ -2,6 +2,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import { assignment } from '../assignments.model';
 import {AssignmentsService} from '../../shared/assignments.service';
 import {Router,ActivatedRoute} from '@angular/router'
+import {AuthService} from "../../shared/auth.service";
 
 @Component({
   selector: 'app-component-detail',
@@ -10,11 +11,13 @@ import {Router,ActivatedRoute} from '@angular/router'
 })
 export class ComponentDetailComponent implements OnInit {
  //@Input()
+
   assignementTransmis!:assignment;
  @Output() suppAssignment = new EventEmitter <assignment>();
   constructor(private assignementsservice:AssignmentsService,
               private route:ActivatedRoute,
-              private router:Router
+              private router:Router,
+              public authservice:AuthService,
 
   ) { }
 
@@ -23,6 +26,7 @@ export class ComponentDetailComponent implements OnInit {
     const id = +this.route.snapshot.params['id'];
     this.assignementsservice.getAssignment(id).
     subscribe(a => this.assignementTransmis=a);
+
 
   }
 
@@ -55,5 +59,11 @@ export class ComponentDetailComponent implements OnInit {
   onClickEdit(){
     this.router.navigate(["/assignement",this.assignementTransmis.id,'edit'],
       {queryParams:{nom:this.assignementTransmis.nom},fragment:'edition'});
+  }
+  isadmin(){
+    return this.authservice.admin;
+  }
+  islogged(){
+    return this.authservice.loggedIn;
   }
 }

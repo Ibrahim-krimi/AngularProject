@@ -14,12 +14,12 @@ export class AuthGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     //return true;
     return this.service.isAdmin().then(
-      (authentifie:Boolean) =>{
+      (authentifie) =>{
         if (authentifie){
           return true;
         }else {
           //avant d interdir la navifation on renvoi a la page d accueil
-          this.router.navigate(['home']);
+         // this.router.navigate(['home']);
           return false;
         }
 

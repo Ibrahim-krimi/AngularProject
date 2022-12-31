@@ -12,7 +12,7 @@ import {Router} from "@angular/router";
 export class ToolbarAssignmentsComponent implements OnInit {
 opened=false;
 @Input()
-isLoggin: boolean = false;
+isLoggin=false;
   constructor(
     private auth:AuthService,
     private assignementservice :AssignmentsService,
@@ -24,13 +24,16 @@ isLoggin: boolean = false;
   }
 
   ngOnInit(): void {
-    this.isLoggin = this.auth.loggedIn;
-    console.log(this.isLoggin)
+   // this.isLoggin = this.auth.loggedIn;
 
+
+  }
+  isLoggedIn():boolean{
+    return this.auth.loggedIn
   }
 //  log=this.auth.loggedIn;
   logout(){
-  this.isLoggin = !this.auth.loggedIn;
+  this.auth.logout();
   }
   getauth(){
      return this.auth;
@@ -42,6 +45,9 @@ this.assignementservice.peuplerbd2ForkJoin().subscribe(()=>{
   this.route.navigate(["home"],{replaceUrl:true});
 
 })
+  }
+  isAdmin(){
+    return this.auth.admin;
   }
 
 

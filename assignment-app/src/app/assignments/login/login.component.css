@@ -1,6 +1,12 @@
 .form
 {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   margin: 5px;
+  justify-content: space-between;
 }
+button{
+  height: 30%;
+  margin-top: 4%;
+}
+

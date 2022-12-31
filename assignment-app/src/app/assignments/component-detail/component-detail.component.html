@@ -9,9 +9,9 @@
      (click)="onAssignementRendu()">
      Assignement rendu
    </mat-checkbox>
-     <button  mat-flat-button color="accent" (click)="OnSupp(assignementTransmis)" >Supprimer</button><br>
+     <button  mat-flat-button color="accent" (click)="OnSupp(assignementTransmis)" [disabled]="!isadmin()">Supprimer</button><br>
      <nav>
-       <button  mat-flat-button color="accent" (click)="onClickEdit()" >Modifier</button>
+       <button  mat-flat-button color="accent" (click)="onClickEdit()" [disabled]="!islogged()" >Modifier</button>
      </nav>  <br>
    </div>
  </mat-card>

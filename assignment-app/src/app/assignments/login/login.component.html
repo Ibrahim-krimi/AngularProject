@@ -1,27 +1,25 @@
 <form class="form" #formAssignment >
   <mat-form-field>
     <input
-      required minlength="3"
+
            matInput
-           placeholder="User"
+           placeholder="Username:"
            [(ngModel)]="email"
            name="email">
-  </mat-form-field>
+  </mat-form-field>&nbsp;
   <mat-form-field>
     <input
-          required minlength="3"
            matInput
            type="password"
-           placeholder="password"
+           placeholder="password:"
            [(ngModel)]="password"
            name="password"
     >
-  </mat-form-field>
-  <button type="button" mat-stroked-button
-          color="primary"
+  </mat-form-field>&nbsp;
+  <button type="button" mat-flat-button color="primary"
 
           (click)="onverif() ; formAssignment.reset"
-  > Ajouter un devoir
+  > Connexion
   </button >
 </form>
 

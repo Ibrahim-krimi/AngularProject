@@ -7,13 +7,14 @@
 <p>{{nomDevoir}}</p>
   <p>NB Total d'assignments : {{totalDocs}}</p>
   <p>Total de page : {{totalPages}}</p>
+  <p>NB Assignment par page: 1 <input type="range" min=1 max=100 (change)="getAssignements()"  [(ngModel)]="limit"> {{limit}} </p>
   <div class="">
-    <button mat-raised-button color="primary">Premiére</button>&nbsp;
-    <button mat-raised-button color="primary">Precéndent</button>&nbsp;
-    <button mat-raised-button color="primary">Suivant</button>&nbsp;
-    <button mat-raised-button color="primary">Derniére</button>&nbsp;
+    <button mat-raised-button color="primary"(click)="pagePremiere()"[disabled]="page===1">Premiére</button>&nbsp;
+    <button mat-raised-button color="primary" (click)="pagePrecdent()" [disabled]="!hasPrevPage">Precedent</button>&nbsp;
+    <button mat-raised-button color="primary" (click)="pageSuivant()"[disabled]="!hasNextPage">Suivant</button>&nbsp;
+    <button mat-raised-button color="primary"(click)="pageDerniere()" [disabled]="page===totalPages">Derniére</button>&nbsp;
   </div>
-
+  <!--
     <mat-list *ngFor=" let assignment of assignemets">
       <nav><a routerLink="/assignement/{{assignment.id}}">
 
@@ -29,7 +30,41 @@
           </mat-list-item>
     </a></nav>
   </mat-list>
-    <!--
+  -->
+
+  <table mat-table [dataSource]="assignemets" class="mat-elevation-z8 demo-table" matSort>
+    <!-- Position Column -->
+    <ng-container matColumnDef="demo-id">
+      <th mat-header-cell *matHeaderCellDef> id </th>
+      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="demo-nom">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Trier par Nom"> Nom </th>
+      <td mat-cell *matCellDef="let element"> {{element.nom}} </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="demo-dateDeRendu">
+      <th mat-header-cell *matHeaderCellDef> Date De rendu  </th>
+      <td mat-cell *matCellDef="let element"> {{element.dateDeRendu|date}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="demo-rendu">
+      <th mat-header-cell *matHeaderCellDef> Symbol </th>
+      <td mat-cell *matCellDef="let element"> {{element.rendu}} </td>
+    </ng-container>
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr   routerLink="/assignement/{{row.id}}" mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+
+
+  <!--
     <app-component-detail *ngIf="!formVisible" [assignementTransmis]="assignmentSelection" (suppAssignment)="OnsuppAssignment($event)" ></app-component-detail>
     -->
 
