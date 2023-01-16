@@ -4,3 +4,40 @@
   flex-direction: column;
   margin: 5px;
 }
+
+p{
+  text-align: center;
+}
+.Input{
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.remarque{
+
+
+}
+
+.line2{
+  width: 99%;
+
+  display: flex;
+  justify-content: center;
+}
+.remarque mat-form-field {
+  width: 80%;
+}
+.remarque{
+  width: 36%;
+}
+
+
+img{
+  width: 40px;
+  height: 40px;
+  position: relative;
+  top: 7px;
+}
+.image2{
+  margin-left: 20px;
+}

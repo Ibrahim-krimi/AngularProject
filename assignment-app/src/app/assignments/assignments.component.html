@@ -1,8 +1,6 @@
 
   <main *ngIf="!formVisible">
-    <a routerLink="/add">
-    <button id="button_ajout" mat-flat-button color="accent" (click)="onAddAssignmentbtnClick()">Ajouter Devoir</button>
-    </a>
+    <button   routerLink="/add" [disabled]="!isLoggedIn()" id="button_ajout" mat-flat-button color="accent">Ajouter Devoir</button>
   </main>
 <p>{{nomDevoir}}</p>
   <p>NB Total d'assignments : {{totalDocs}}</p>
@@ -33,32 +31,58 @@
   -->
 
   <table mat-table [dataSource]="assignemets" class="mat-elevation-z8 demo-table" matSort>
-    <!-- Position Column -->
+    <!-- Position id -->
     <ng-container matColumnDef="demo-id">
       <th mat-header-cell *matHeaderCellDef> id </th>
       <td mat-cell *matCellDef="let element"> {{element.id}} </td>
     </ng-container>
-
-    <!-- Name Column -->
+    <!-- nom Column -->
     <ng-container matColumnDef="demo-nom">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Trier par Nom"> Nom </th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Trier par Nom"> Nom Assignement   </th>
       <td mat-cell *matCellDef="let element"> {{element.nom}} </td>
     </ng-container>
-
-    <!-- Weight Column -->
+    <!-- auteur Column -->
+    <ng-container matColumnDef="demo-auteur">
+      <th mat-header-cell *matHeaderCellDef > Auteur   </th>
+      <td mat-cell *matCellDef="let element"> {{element.auteur}} </td>
+    </ng-container>
+    <!-- photoprof Column -->
+    <ng-container matColumnDef="demo-prof">
+      <th mat-header-cell *matHeaderCellDef > photo du professeur   </th>
+      <td mat-cell *matCellDef="let element"> <img [src]="element.photoprof"> </td>
+    </ng-container>
+    <!-- nommatiere Column -->
+    <ng-container matColumnDef="demo-matiere">
+      <th mat-header-cell *matHeaderCellDef > Cours   </th>
+      <td mat-cell *matCellDef="let element"> {{element.nommatiere}} </td>
+    </ng-container>
+    <!-- photomatiere Column -->
+    <ng-container matColumnDef="demo-photomat">
+      <th mat-header-cell *matHeaderCellDef > Photo Cours   </th>
+      <td mat-cell *matCellDef="let element">  <img [src]="element.photomatiere"> </td>
+    </ng-container>
+    <!-- Date Column -->
     <ng-container matColumnDef="demo-dateDeRendu">
       <th mat-header-cell *matHeaderCellDef> Date De rendu  </th>
       <td mat-cell *matCellDef="let element"> {{element.dateDeRendu|date}} </td>
     </ng-container>
-
-    <!-- Symbol Column -->
+    <!-- rendu Column -->
     <ng-container matColumnDef="demo-rendu">
-      <th mat-header-cell *matHeaderCellDef> Symbol </th>
+      <th mat-header-cell *matHeaderCellDef> Rendu </th>
       <td mat-cell *matCellDef="let element"> {{element.rendu}} </td>
     </ng-container>
+    <!-- notematiere Column -->
+    <ng-container matColumnDef="demo-notematiere">
+      <th mat-header-cell *matHeaderCellDef > Note   </th>
+      <td mat-cell *matCellDef="let element"> {{element.notematiere}} </td>
+    </ng-container>
+    <!-- remarque Column -->
+    <ng-container matColumnDef="demo-remarque">
+      <th mat-header-cell *matHeaderCellDef > remarque   </th>
+      <td mat-cell *matCellDef="let element">{{element.remarque}} </td>
+    </ng-container>
 
-
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky:true;"></tr>
     <tr   routerLink="/assignement/{{row.id}}" mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
 

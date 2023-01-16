@@ -18,21 +18,48 @@
 
 }
 .demo-table {
+  margin-top: 10px;
   width: 100%;
+
+}
+.table{
+  display: flex;
+  justify-content: center;
 }
 
-.mat-mdc-row .mat-mdc-cell {
-  border-bottom: 1px solid transparent;
-  border-top: 1px solid transparent;
+.mat-column-demo-id {
+  width: 32px;
+    padding-right: 24px;
+  text-align: center;
+}
+
+.mat-column-demo-auteur {
+  padding-left: 16px;
+  font-size: 15px;
+}
+
+.mat-column-demo-dateDeRendu {
+  font-style: italic;
+}
+
+.mat-column-demo-rendu{
+
+  text-align: center;
+  font-weight: bold;
+}
+
+td{
   cursor: pointer;
 }
+img{
+  width: 30px;
+  height: 30px;
+  position: relative;
 
-.mat-mdc-row:hover .mat-mdc-cell {
-  border-color: currentColor;
 }
 
-.demo-row-is-clicked {
-  font-weight: bold;
+.assignmentInfo{
+  padding-left: 2%;
 }
 
 

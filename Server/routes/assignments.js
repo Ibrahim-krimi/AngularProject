@@ -45,15 +45,21 @@ function postAssignment(req, res){
     assignment.nom = req.body.nom;
     assignment.dateDeRendu = req.body.dateDeRendu;
     assignment.rendu = req.body.rendu;
-
+    assignment.notematiere=req.body.notematiere;
+    assignment.auteur=req.body.auteur;
+    assignment.remarque=req.body.remarque;
+    assignment.nommatiere=req.body.nommatiere;
+    assignment.photomatiere=req.body.photomatiere;
+    assignment.photoprof=req.body.photoprof;
     console.log("POST assignment reçu :");
-    console.log(assignment)
+  //  console.log(assignment)
 
-    assignment.save( (err) => {
-        if(err){
+    assignment.save((err) => {
+        if (err) {
+            console.log(assignment);
             res.send('cant post assignment ', err);
         }
-        res.json({ message: `${assignment.nom} saved!`})
+        res.json({message: `${assignment.nom} saved!`})
     })
 }
 

@@ -24,7 +24,7 @@ mongoose.connect(uri, options)
     console.log("vérifiez with http://localhost:8010/api/assignments que cela fonctionne")
     },
     err => {
-      console.log('Erreur de connexion: ', err);
+      console.log('Erreur de connexion: ', err)
     });
 
 // Pour accepter les connexions cross-domain (CORS)
@@ -51,7 +51,7 @@ app.route(prefix + '/assignments/:id')
   .get(assignment.getAssignment)
   .delete(assignment.deleteAssignment);
 
-app.route(prefix+'/user')
+app.route(prefix+'/users')
     .post(user.getUser)
 
 app.route(prefix+ '/users')

@@ -6,6 +6,8 @@ import {HttpClient} from "@angular/common/http";
 import {coerceStringArray} from "@angular/cdk/coercion";
 import {error} from "@angular/compiler-cli/src/transformers/util";
 import {bdInitialAssignments} from "./data";
+import {bdInitialMatieres} from "./datamatiere";
+import {Matiere} from "../assignments/Matiere.model";
 
 @Injectable({
   providedIn: 'root'
@@ -14,9 +16,11 @@ export class AssignmentsService {
 
    // id=3;
   assignemets:any
+  subjectList :Matiere[];
+
   ngOnInit(): void {
   }
-  url="http://localhost:8010/api/assignments";
+  url="https://angular-back.onrender.com/api/assignments";
   constructor( public logging:LoggingService , private http:HttpClient) { }
   getAssignments():Observable<assignment[]>{ // observale facilite les chose
     return this.http.get<assignment[]>(this.url);
@@ -77,6 +81,10 @@ export class AssignmentsService {
       nouvAssignement.id=a.id;
       nouvAssignement.dateDeRendu=new Date(a.dateDeRendu);
       nouvAssignement.rendu=a.rendu;
+      nouvAssignement.remarque=a.remarque;
+      nouvAssignement.auteur=a.auteur;
+      nouvAssignement.notematiere=a.notematiere;
+
 
       this.AddAssignenements(nouvAssignement).subscribe(
         reponse=> console.log(reponse.message)
@@ -94,6 +102,13 @@ export class AssignmentsService {
       nouvAssignement.id = a.id;
       nouvAssignement.dateDeRendu = new Date(a.dateDeRendu);
       nouvAssignement.rendu = a.rendu;
+      nouvAssignement.auteur=a.auteur;
+      nouvAssignement.remarque=a.remarque;
+      nouvAssignement.notematiere=a.notematiere;
+      const randomElement =this.getRandomElement(bdInitialMatieres);
+      nouvAssignement.nommatiere=randomElement.nom;
+      nouvAssignement.photoprof=randomElement.photoprof;
+      nouvAssignement.photomatiere=randomElement.photomatiere;
 
       appelVersAddAssignement.push(this.AddAssignenements(nouvAssignement))
 
@@ -102,6 +117,20 @@ export class AssignmentsService {
       console.log("###Tous les Assingnement sont ajouter !!!")
     return forkJoin(appelVersAddAssignement);
 
+  }
+  getmatieres():Observable<Matiere[]>{
+    this.subjectList=bdInitialMatieres;
+return of(bdInitialMatieres);
+  }
+  getmateireById(id:number):Observable<Matiere|undefined>{
+      return of(this.subjectList.find(a=>a.id === id));
+  }
+  getmatiereByName(name:string):Observable<Matiere|undefined>{
+    return of(this.subjectList.find((a)=>{a.nom == name}));
+  }
+   getRandomElement(array: any[]): any {
+    const randomIndex = Math.floor(Math.random() * array.length);
+    return array[randomIndex];
   }
 
 }

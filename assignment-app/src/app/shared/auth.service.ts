@@ -10,7 +10,7 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 export class AuthService {
   loggedIn=false;
   admin=false;
-  url="http://localhost:8010/api/user";
+  url="https://angular-back.onrender.com/api/users";
   user:User;
   private HttpOptions = {
     headers: new HttpHeaders({
@@ -48,7 +48,6 @@ constructor(private http:HttpClient) {}
     return isUserAdmin;
   }
   findUser(email,password):Observable<User|undefined>{
-
       return this.http.post<User>(this.url,{email,password},this.HttpOptions) ;
   }
 

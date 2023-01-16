@@ -4,6 +4,7 @@ import {AssignmentsService} from '../shared/assignments.service';
 import {Observable, of} from "rxjs";
 import {MatSort} from "@angular/material/sort";
 import {MatTableDataSource} from "@angular/material/table";
+import {AuthService} from "../shared/auth.service";
 
 
 @Component({
@@ -31,10 +32,10 @@ export class AssignmentsComponent implements OnInit ,AfterViewInit {
   hasNextPage:boolean=false;
   nextPage:number=0;
   //pour l'affichage en table
-  displayedColumns: string[] = ['demo-id', 'demo-nom', 'demo-dateDeRendu', 'demo-rendu'];
+  displayedColumns: string[] = ['demo-id', 'demo-nom','demo-auteur','demo-prof','demo-matiere','demo-photomat','demo-dateDeRendu', 'demo-rendu','demo-notematiere','demo-remarque'];
   dataSource= new MatTableDataSource(this.assignemets);
 
- constructor (private assignementService:AssignmentsService) { }
+ constructor (private assignementService:AssignmentsService,private authService:AuthService) { }
 
   ngOnInit(): void {
     //this.assignemets=this.assignementService.getAssignments();
@@ -99,4 +100,8 @@ onNouvelAssignment(event:assignment){
     this.page=this.totalPages;
     this.getAssignements();
   }
+ isLoggedIn()
+ {
+   return this.authService.loggedIn;
+ }
 }
