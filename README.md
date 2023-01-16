@@ -1,3 +1,8 @@
+KRIMI Ibrahim
+BOUCHEFFA Badis 
+
+Lien git :  https://github.com/Ibrahim-krimi/AngularProject 
+Lien render : https://angular-front5.onrender.com/
 # My Angular Node.js MIAGEPROJECT
 
 This is a sample project that demonstrates how to build a web application using Angular and Node.js.
@@ -8,7 +13,7 @@ This is a sample project that demonstrates how to build a web application using 
 - Angular CLI (v10 or later)
 
 ## Installation
-
+s
 1. Clone or download the project from GitHub.
 
 ```bash
