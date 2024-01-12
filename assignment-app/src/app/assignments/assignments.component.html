@@ -3,10 +3,12 @@
     <button   routerLink="/add" [disabled]="!isLoggedIn()" id="button_ajout" mat-flat-button color="accent">Ajouter Devoir</button>
   </main>
 <p>{{nomDevoir}}</p>
+  <div class="ClassTotal">
   <p>NB Total d'assignments : {{totalDocs}}</p>
   <p>Total de page : {{totalPages}}</p>
-  <p>NB Assignment par page: 1 <input type="range" min=1 max=100 (change)="getAssignements()"  [(ngModel)]="limit"> {{limit}} </p>
-  <div class="">
+    <p>NB Assignment par page:  {{limit}} </p>
+      <input class="custom-range" type="range" min=1 max=100 (change)="getAssignements()"   [(ngModel)]="limit"><br/>
+
     <button mat-raised-button color="primary"(click)="pagePremiere()"[disabled]="page===1">Premiére</button>&nbsp;
     <button mat-raised-button color="primary" (click)="pagePrecdent()" [disabled]="!hasPrevPage">Precedent</button>&nbsp;
     <button mat-raised-button color="primary" (click)="pageSuivant()"[disabled]="!hasNextPage">Suivant</button>&nbsp;

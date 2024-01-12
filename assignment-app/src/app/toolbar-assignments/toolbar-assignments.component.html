@@ -1,4 +1,4 @@
-<mat-toolbar color="primary">
+<mat-toolbar  class="custom-toolbar" color="primary">
   <mat-toolbar-row>
     <button mat-button (click)="opened=!opened"><mat-icon>menu</mat-icon> Assignments </button>
     <h1></h1>
@@ -18,9 +18,9 @@
      <a> Vous n'êtes pas connecté</a>&nbsp;
     </ng-template>
     &nbsp;
-    <button mat-flat-button color="primary" (click)="initialser()" >Peupler ma base </button>
+    <button mat-flat-button color="primary"  class="custom-button-base" (click)="initialser()" >Peupler ma base </button>
     <div class="composant">
-      <a *ngIf="isLoggedIn(); else login" mat-button (click)="logout()" > <button mat-button color="accent"  > <mat-icon>logout</mat-icon> Deconnexion </button> </a>
+      <a *ngIf="isLoggedIn(); else login" mat-button class="custom-button-logout"  (click)="logout()" > <button mat-button style=""> <mat-icon>logout</mat-icon> Deconnexion </button> </a>
       <ng-template #login>
         <app-login></app-login>
       </ng-template>
@@ -31,10 +31,10 @@
   <mat-sidenav [(opened)] = "opened" mode="push">
     <mat-list>
       <mat-list-item>   <a routerLink="/home" style="text-decoration: none;" > Home</a> </mat-list-item>
-      <mat-list-item>    <a style="text-decoration: none;" routerLink="/detail"> Liste des devoirs</a> </mat-list-item>
+ <!--     <mat-list-item>    <a style="text-decoration: none;" routerLink="/detail"> Liste des devoirs</a> </mat-list-item>
       <mat-list-item>    <a style="text-decoration: none;" > Ajout d'un devoir</a> </mat-list-item>
       <mat-list-item>    <a style="text-decoration: none;" routerLink="/Modification"> Modification d'un devoir</a> </mat-list-item>
-      <mat-list-item>    <a style="text-decoration: none;" routerLink="/suppression"> Suppression d'un devoir</a> </mat-list-item>
+      <mat-list-item>    <a style="text-decoration: none;" routerLink="/suppression"> Suppression d'un devoir</a> </mat-list-item> -->
     </mat-list>
   </mat-sidenav>
   <mat-sidenav-content>

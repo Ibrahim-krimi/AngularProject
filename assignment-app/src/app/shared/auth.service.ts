@@ -8,9 +8,11 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
   providedIn: 'root'
 })
 export class AuthService {
+  private tokenKey = 'authToken';
+
   loggedIn=false;
   admin=false;
-  url="https://angular-back.onrender.com/api/users";
+  url="http://localhost:8010/api/users";
   user:User;
   private HttpOptions = {
     headers: new HttpHeaders({
@@ -79,6 +81,15 @@ constructor(private http:HttpClient) {}
     );
     return isUserAdmin;
   }
-
-
+  generateToken(): string {
+    const randomToken = window.crypto.getRandomValues(new Uint8Array(16)).join('');
+    localStorage.setItem(this.tokenKey, randomToken);
+    return randomToken;
+  }
+  getToken(): string | null {
+    return localStorage.getItem(this.tokenKey);
+  }
+  isAuthenticated(): boolean {
+    return this.getToken() !== null;
+  }
 }

@@ -17,6 +17,7 @@ export class AuthGuard implements CanActivate {
       (authentifie) =>{
         if (authentifie){
           return true;
+          // localStorage('login')
         }else {
           //avant d interdir la navifation on renvoi a la page d accueil
          // this.router.navigate(['home']);

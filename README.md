@@ -1,8 +1,3 @@
-KRIMI Ibrahim
-BOUCHEFFA Badis 
-
-Lien git :  https://github.com/Ibrahim-krimi/AngularProject 
-Lien render : https://angular-front5.onrender.com/
 # My Angular Node.js MIAGEPROJECT
 
 This is a sample project that demonstrates how to build a web application using Angular and Node.js.
@@ -58,6 +53,5 @@ To deploy the project to a production environment, you will need to build the An
 
 Contact
 If you need help or have any questions, please contact us at our email address:
- ibrahim.krimi@etu.univ-cotedazur.fr ,
- badis.boucheffa@etu.univ-cotedazur.fr
+
             
